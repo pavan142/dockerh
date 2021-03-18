@@ -21,7 +21,7 @@ commit() {
 
 update() {
   env-file-option=""
-  docker-env-file="docker-env.txt"
+  docker-env-file="docker-env"
   if [ -f "$docker-env-file" ]; then
     docker kill $CONTAINER_NAME; docker rm $CONTAINER_NAME; docker create -t -i --network='host' --env-file ./docker-env --name $CONTAINER_NAME $IMAGE_NAME
   else
