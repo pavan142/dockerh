@@ -20,17 +20,18 @@ commit() {
 }
 
 update() {
-  env-file-option=""
-  docker-env-file="docker-env"
-  if [ -f "$docker-env-file" ]; then
+  docker_env_file="docker-env"
+  if [ -f "$docker_env_file" ]; then
+    echo "docker-env file found, setting environment variables"
     docker kill $CONTAINER_NAME; docker rm $CONTAINER_NAME; docker create -t -i --network='host' --env-file ./docker-env --name $CONTAINER_NAME $IMAGE_NAME
   else
+    echo "docker-env file not found, it's okay , it's not mandatory"
     docker kill $CONTAINER_NAME; docker rm $CONTAINER_NAME; docker create -t -i --network='host' --name $CONTAINER_NAME $IMAGE_NAME
   fi
 }
 
 clear() {
-  docker image prune -f
+  docker image prune -a -f
 }
 
 start() {
