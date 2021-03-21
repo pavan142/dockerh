@@ -50,6 +50,10 @@ status() {
   docker ps -a -f "name=${CONTAINER_NAME}"
 }
 
+join() {
+  docker exec -i -t $CONTAINER_NAME bash
+}
+
 case $1 in
 
   "commit")
@@ -78,6 +82,10 @@ case $1 in
   
   "start")
   start
+    ;;
+
+  "join")
+  join
     ;;
   *)
     echo "I am sorry, but I don't know how to process that!"

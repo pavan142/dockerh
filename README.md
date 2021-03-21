@@ -25,6 +25,8 @@
       ```dockerh log``` <br/><br/>
     * **Clear** all the stale images of your program. This internally calls `docker image prune`<br/>
       ```dockerh clear``` <br/><br/>
+    * **Enter** into your running container using another terminal, and see what's happening in it. For all purposes and intents, docker container is like another linux machine. So you can go ahead and do`ls -la` or `ps -ef`, treat it like a separate machine.I always find this option quite useful. By the way did I tell you that you can do this from as many terminals as you want, all of them unique little windows to your container.This internally uses `docker exec` to attach bash session to your container<br/>
+    ```dockerh join```<br/><br/>
   * **Advanced Features**
     * Docker needs unique names  to identify both the containers and images. It certainly is cumbersome to provide the names each time. So **dockerh** creates a random name for your docker containers and images, and manages it completely itself, so that you don't have to provide it each time or even remember it for that matter. As you can clearly see in the above listed **dockerh** commands, none of them take name as input
     * But if for some reason, you feel the need to want to provide the name for yourself. You can either provide it in a **DockerH** file **or** set the environment variable **DOCKERH_MODULE_NAME** to the name you want. Remember as per the docker 
